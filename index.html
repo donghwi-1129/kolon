@@ -1,0 +1,344 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>AM 예방교육 개선 제안</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+/* Layout: 1920×1080 보고서 무대를 화면에 맞춰 축소, 슬라이드는 겹쳐 두고 페이드·슬라이드로 전환. 단일 라이트 테마(사무용 흑백 + 파랑 포인트). */
+:root{
+  --ink:#1A1B1E;
+  --paper:#FDFDFC;
+  --box:#F1F1F0;
+  --line:#D5D6D8;
+  --mute:#4A5160;
+  --soft:#8C9099;
+  --accent:#1F6FB5;
+  --accent-soft:#E6EEF7;
+  --alert:#B83A2B;
+  --room:#E6E7E9;
+  --bar:#FFFFFF;
+  --f-body:'Noto Sans KR','Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;
+  color-scheme:light;
+}
+html,body{height:100%}
+body{margin:0;background:var(--room);color:var(--ink);font-family:var(--f-body);overflow:hidden}
+.app{height:100%;box-sizing:border-box;display:flex;flex-direction:column;gap:10px;padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.viewport{flex:1;position:relative;overflow:hidden;min-height:0}
+.stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:center center;background:var(--paper);box-shadow:0 20px 60px rgba(26,27,30,.16),0 2px 6px rgba(26,27,30,.08);overflow:hidden}
+
+/* 슬라이드 전환 */
+.slide{position:absolute;inset:0;box-sizing:border-box;padding:88px 112px 120px;display:flex;flex-direction:column;gap:24px;background:var(--paper);
+  opacity:0;visibility:hidden;transform:translateX(70px);
+  transition:opacity .6s ease,transform .7s cubic-bezier(.2,.75,.2,1),visibility 0s linear .7s}
+.slide.before{transform:translateX(-70px)}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease,transform .7s cubic-bezier(.2,.75,.2,1),visibility 0s}
+.slide.active .rv{animation:rise .6s cubic-bezier(.2,.75,.2,1) both;animation-delay:calc(var(--i,0) * 90ms + 120ms)}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  .slide,.slide.active{transition:opacity .2s ease,visibility 0s;transform:none}
+  .slide.active .rv{animation:none}
+}
+
+/* 공통 요소 */
+.pill{position:absolute;top:40px;right:112px;margin:0;padding:6px 28px;font-size:24px;color:#555B66;background:#F4F4F4;border:2px solid #333A44;border-radius:40px}
+.foot{position:absolute;left:112px;bottom:40px;margin:0;font-size:24px;color:var(--soft)}
+.pno{position:absolute;right:112px;bottom:40px;margin:0;font-size:24px;font-weight:700;font-variant-numeric:tabular-nums}
+.pno span{color:var(--soft)}
+h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:-1px}
+.rule{height:2px;background:var(--ink)}
+.key{margin:0;font-size:34px;font-weight:700;line-height:1.4;border-left:8px solid var(--accent);padding:4px 0 4px 24px;text-wrap:balance}
+.key em{font-style:normal;color:var(--accent)}
+.cols{display:flex;gap:40px;align-items:stretch}
+.col{flex:1;display:flex;flex-direction:column;min-width:0}
+.tab{display:flex;align-items:center;gap:20px;background:var(--ink);padding:18px 32px;border-radius:0 28px 0 0}
+.tab small{font-size:26px;font-weight:500;color:#B8BEC8}
+.tab strong{font-size:30px;font-weight:700;color:#F7F7F7}
+.box{background:var(--box);padding:20px 36px;flex:1}
+.ic{width:44px;height:44px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.row{display:flex;align-items:center;gap:20px;padding:14px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row b{width:220px;flex:none;font-size:28px}
+.row span{font-size:26px;color:var(--mute)}
+.row .warn{color:var(--alert)}
+.down{align-self:center;width:40px;height:44px;color:#9A9C9F}
+.verdict{display:flex;border:3px solid var(--ink)}
+.verdict .lab{display:flex;align-items:center;background:var(--ink);color:#F7F7F7;padding:20px 40px;font-size:28px;font-weight:700;flex:none}
+.verdict p{margin:0;padding:20px 36px;font-size:28px;line-height:1.5}
+
+/* 2장 */
+.left{flex:none;width:560px;display:flex;flex-direction:column}
+.plan-item{display:flex;gap:20px;align-items:flex-start}
+.plan-item + .plan-item{margin-top:24px}
+.num{flex:none;width:52px;height:52px;border-radius:50%;background:var(--ink);color:#F7F7F7;display:grid;place-items:center;font-size:26px;font-weight:700}
+.num.blue{background:var(--accent)}
+.plan-item h3{margin:0 0 10px;font-size:28px;line-height:1.3;text-wrap:balance}
+.plan-item ul{margin:0;padding-left:28px;font-size:24px;line-height:1.5;color:var(--mute)}
+.right-arrow{align-self:center;width:56px;height:40px;color:#9A9C9F;flex:none}
+.proc{flex:1;display:flex;flex-direction:column;gap:8px;border:2px solid var(--ink);border-top:0;padding:20px 28px}
+.slide.s2{gap:18px}
+.slide.s2 .verdict .lab,.slide.s2 .verdict p{padding-top:16px;padding-bottom:16px}
+.step{display:flex;align-items:center;gap:20px;background:var(--box);padding:8px 20px 8px 0;position:relative}
+.step .n{width:150px;flex:none;text-align:center;padding:6px 0;background:var(--ink);color:#F7F7F7;font-size:24px;font-weight:700;letter-spacing:1px}
+.step .n.blue{background:var(--accent)}
+.step b{width:240px;flex:none;font-size:28px}
+.step span{font-size:24px;color:var(--mute)}
+.note-in{margin:4px 0 0;font-size:24px;color:#6B7280}
+.redline{position:absolute;right:112px;bottom:84px;margin:0;font-size:24px;font-style:italic;color:var(--alert)}
+
+/* 3장 */
+.effects{flex:1;display:flex;flex-direction:column;gap:24px;background:var(--box);padding:28px}
+.effect{flex:1;display:flex;align-items:center;gap:32px;background:var(--paper);border:1px solid var(--line);padding:32px 36px}
+.halo{flex:none;width:96px;height:96px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center}
+.halo .ic{width:52px;height:52px}
+.effect h3{margin:0 0 10px;font-size:32px;line-height:1.3}
+.effect p{margin:0;font-size:26px;line-height:1.5;color:var(--mute)}
+.asks{flex:1;border:2px solid var(--ink);border-top:0;padding:12px 36px;display:flex;flex-direction:column}
+.ask{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:28px}
+.ask:last-child{border-bottom:0}
+.ask i{font-style:normal;flex:none;font-size:24px;font-weight:700;color:#F7F7F7;background:var(--ink);padding:2px 14px;font-variant-numeric:tabular-nums}
+.ask.hl i{background:var(--accent)}
+.ask.hl{font-weight:700}
+
+/* 진행 바 + 컨트롤 */
+.progress{position:absolute;left:0;bottom:0;height:6px;background:var(--accent);transition:width .7s cubic-bezier(.2,.75,.2,1)}
+.bar{flex:none;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap}
+.btn{font:inherit;font-size:15px;display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 14px;border-radius:20px;border:1px solid #C9CBD0;background:var(--bar);color:var(--ink);cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.btn[disabled]{opacity:.4;cursor:default}
+.btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.btn[aria-pressed="true"]{background:var(--ink);color:#F7F7F7;border-color:var(--ink)}
+.count{min-width:64px;text-align:center;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums}
+.dots{display:flex;gap:6px;margin:0 6px}
+.dot{width:10px;height:10px;border-radius:50%;border:0;padding:0;background:#C3C5CA;cursor:pointer;transition:width .3s ease,background .3s ease}
+.dot.on{width:28px;border-radius:5px;background:var(--ink)}
+.dot:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.notes{flex:none;max-height:32vh;overflow:auto;background:var(--bar);border:1px solid #D5D6D8;border-radius:12px;padding:16px 20px;font-size:15px;line-height:1.75;color:var(--ink)}
+.notes h4{margin:0 0 8px;font-size:13px;letter-spacing:.08em;color:var(--accent)}
+.notes p{margin:0 0 10px;max-width:72ch}
+.notes p strong{color:var(--accent);font-weight:700}
+.hint{font-size:13px;color:#6B7280;text-align:center}
+@media (max-width:640px){.hint{display:none}.btn .lbl{display:none}}
+</style>
+
+<div class="app">
+  <div class="viewport" id="viewport">
+    <div class="stage" id="stage" aria-live="polite">
+
+      <!-- 1장 -->
+      <section class="slide active" data-i="0" aria-label="1. 현재 문제">
+        <p class="pill">레저사업운영팀</p>
+        <h2 class="title rv" style="--i:0">1. 현재 문제</h2>
+        <div class="rule rv" style="--i:1"></div>
+        <p class="key rv" style="--i:2">현장과의 소통도, 신고도 닿지 않아 <em>법정의무 이수에 머물고 있습니다</em></p>
+        <div class="cols">
+          <div class="col rv" style="--i:3">
+            <div class="tab"><small>문제 01</small><strong>교육·신고 접근이 어려운 구조</strong></div>
+            <div class="box">
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M16 16l2-2M18.5 18.5l2-2"/></svg><b>계정 부재</b><span>아이켄 ID 없어 개인 폰에 앱 설치</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b>신고 채널 부재</b><span>신고는 코톡에만, 사업장 이용 불가</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.6c2.6.2 4.4 2 5 5.4"/></svg><b>접근성 한계</b><span>고연령, 설치·로그인부터 어려움</span></div>
+              <div class="row"><svg class="ic warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg><b>신고 다발</b><span>괴롭힘 신고 지속, 불만 확대 우려</span></div>
+            </div>
+          </div>
+          <div class="col rv" style="--i:4">
+            <div class="tab"><small>문제 02</small><strong>현장 소통이 어려운 교육 환경</strong></div>
+            <div class="box">
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M10 8l5 2.5-5 2.5z"/><path d="M8 21h8"/></svg><b>기준 전달 한계</b><span>영상만으로는 괴롭힘 기준 체감 어려움</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>수강 부담</b><span>현장 업무 후 개인 폰 수강 부담</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><b>질문·소통 부족</b><span>현장 질문을 바로 묻고 답하기 어려움</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><b>이수 중심 운영</b><span>법정의무 이수 확인에 머묾</span></div>
+            </div>
+          </div>
+        </div>
+        <svg class="down rv" style="--i:5" viewBox="0 0 40 44" aria-hidden="true"><path d="M13 0h14v24h13L20 44 0 24h13z" fill="currentColor"/></svg>
+        <div class="verdict rv" style="--i:6"><div class="lab">시사점</div><p>이수보다 중요한 것은 현장에서 <b>직장 내 괴롭힘의 기준을 먼저 전달하고 직접 소통하는 것</b></p></div>
+        <p class="foot">레저사업운영팀 업무개선Unit · AM 사업부 예방교육 운영 개선 제안</p>
+        <p class="pno">01 <span>/ 03</span></p>
+      </section>
+
+      <!-- 2장 -->
+      <section class="slide s2" data-i="1" aria-label="2. 개선방안">
+        <p class="pill">레저사업운영팀</p>
+        <h2 class="title rv" style="--i:0">2. 개선방안</h2>
+        <div class="rule rv" style="--i:1"></div>
+        <p class="key rv" style="--i:2">현장 눈높이 교육과 상담 창구로 <em>예방부터 대응까지 연결합니다</em></p>
+        <div class="cols" style="gap:28px">
+          <div class="left rv" style="--i:3">
+            <div class="tab"><small>개선방안</small><strong>핵심 2가지</strong></div>
+            <div class="box" style="padding:32px 36px">
+              <div class="plan-item">
+                <div class="num">1</div>
+                <div><h3>연령대·직무 이해도에 맞춘 현장교육</h3>
+                  <ul><li>근무조 단위 소규모 방문교육</li><li>괴롭힘·성희롱 통합, 실제 사례 각색</li><li>전 직원 / 관리자 과정 분리</li></ul></div>
+              </div>
+              <div class="plan-item">
+                <div class="num blue">2</div>
+                <div><h3>신고 전 상담 창구 마련</h3>
+                  <ul><li>코톡 미사용 사업장용 오프라인 창구</li><li>대면·전화 상담 후 신고 연결</li><li>상담 없이 바로 신고도 보장</li></ul></div>
+              </div>
+            </div>
+          </div>
+          <svg class="right-arrow rv" style="--i:4" viewBox="0 0 56 40" aria-hidden="true"><path d="M0 13h32V0l24 20-24 20V27H0z" fill="currentColor"/></svg>
+          <div class="col rv" style="--i:5">
+            <div class="tab"><small>운영 프로세스</small><strong>교육 → 상담 → 신고 연결</strong></div>
+            <div class="proc">
+              <div class="step"><span class="n">STEP 01</span><b>일정 조율</b><span>사업소별 근무조 단위 교육 일정 확정</span></div>
+              <div class="step"><span class="n">STEP 02</span><b>현장 방문 교육</b><span>괴롭힘·성희롱 통합, 실제 사례 OX·토의</span></div>
+              <div class="step"><span class="n">STEP 03</span><b>상담 창구 안내</b><span>대면 상담 담당자·연락처 직접 공유</span></div>
+              <div class="step"><span class="n blue">STEP 04</span><b>신고 전 상담</b><span>전화·대면 상담으로 단순 갈등 조기 해소</span></div>
+              <div class="step"><span class="n blue">STEP 05</span><b>신고 연결</b><span>실제 괴롭힘 사안은 인사운영팀 정식 신고</span></div>
+              <p class="note-in">※ 성희롱 예방교육 필수 항목 포함, 출석부·교안·사진 증빙</p>
+            </div>
+          </div>
+        </div>
+        <div class="verdict rv" style="--i:6"><div class="lab">운영 원칙</div><p>실제 괴롭힘 사안은 <b>즉시 신고로 연결</b>하고, 상담 없이 바로 신고하는 것도 보장</p></div>
+        <p class="redline">* 회당 교육 시간(60분 내외, 안)은 현장 근무 여건에 따라 조정</p>
+        <p class="foot">레저사업운영팀 업무개선Unit · AM 사업부 예방교육 운영 개선 제안</p>
+        <p class="pno">02 <span>/ 03</span></p>
+      </section>
+
+      <!-- 3장 -->
+      <section class="slide" data-i="2" aria-label="3. 기대효과 및 협조 요청">
+        <p class="pill">레저사업운영팀</p>
+        <h2 class="title rv" style="--i:0">3. 기대효과 및 협조 요청</h2>
+        <div class="rule rv" style="--i:1"></div>
+        <p class="key rv" style="--i:2">현장에서 다 같이 들어야 <em>같은 기준과 경각심이 생깁니다</em></p>
+        <div class="cols">
+          <div class="col rv" style="--i:3">
+            <div class="tab"><small>기대효과</small><strong>함께 인지하는 예방교육</strong></div>
+            <div class="effects">
+              <div class="effect"><div class="halo"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.6c2.6.2 4.4 2 5 5.4"/></svg></div>
+                <div><h3>같은 기준 인지 · 반감 완화</h3><p>전 직원 경각심 형성, “회사가 직접 찾아와 챙긴다”는 인식</p></div></div>
+              <div class="effect"><div class="halo"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
+                <div><h3>법정의무 충족</h3><p>앱 설치 없이 성희롱 예방교육 실적 확보</p></div></div>
+            </div>
+          </div>
+          <div class="col rv" style="--i:4">
+            <div class="tab"><small>협조 요청</small><strong>인사운영팀</strong></div>
+            <div class="asks">
+              <div class="ask"><i>01</i>신고 사례 유형 공유 (개인정보 제외)</div>
+              <div class="ask"><i>02</i>사례 각색 기준 협의 (2차 피해 방지)</div>
+              <div class="ask"><i>03</i>앱 미수강자 집합교육 대체 인정 확인</div>
+              <div class="ask hl"><i>04</i>오프라인 상담·신고 창구 공식화</div>
+              <div class="ask"><i>05</i>근무시간 내 교육 일정 조율</div>
+            </div>
+          </div>
+        </div>
+        <div class="verdict rv" style="--i:5"><div class="lab">Next Step</div><p>방향 협의 후 <b>사업소별 세부 일정과 교안</b>은 업무개선Unit에서 준비</p></div>
+        <p class="foot">레저사업운영팀 업무개선Unit · AM 사업부 예방교육 운영 개선 제안</p>
+        <p class="pno">03 <span>/ 03</span></p>
+      </section>
+
+      <div class="progress" id="progress"></div>
+    </div>
+  </div>
+
+  <div class="notes" id="notes" hidden></div>
+
+  <div class="bar">
+    <button class="btn" id="prev" type="button" aria-label="이전 슬라이드"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg><span class="lbl">이전</span></button>
+    <div class="dots" id="dots"></div>
+    <span class="count" id="count">1 / 3</span>
+    <button class="btn" id="next" type="button" aria-label="다음 슬라이드"><span class="lbl">다음</span><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+    <button class="btn" id="noteBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span class="lbl">스크립트</span></button>
+    <button class="btn" id="fsBtn" type="button"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="lbl">전체화면</span></button>
+    <span class="hint">← → 방향키 · 스페이스 · 스와이프로 넘기기 · N 스크립트</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  var NOTES=[
+    [["오프닝","안녕하세요, 레저사업운영팀 업무개선Unit 김라경입니다. AM 사업부 직장 내 괴롭힘 신고와 관련해서, 교육 쪽에서 본 현재 문제와 개선방안을 세 장으로 정리해 왔습니다. 먼저 현재 상황부터 말씀드리겠습니다."],
+     ["핵심 메시지","한 줄로 말씀드리면, 지금 AM 현장은 소통도 신고도 잘 닿지 않아서, 예방교육이 법정의무 이수에 머물러 있는 상황입니다."],
+     ["문제 01","첫 번째는 AM 현장 직군이 교육과 신고 모두에 접근하기 어려운 구조라는 점입니다. 미화·보안·시설 직군은 아이켄 ID가 없어서, 법정의무교육을 들으려면 개인 휴대폰에 앱을 따로 설치해야 합니다. 또 아이켄 신고는 코톡에만 있다 보니, 아이켄이 없는 대부분의 AM 사업장은 상담이나 신고 채널 자체를 이용할 수 없습니다. 여기에 연령대가 높은 분들이 많아서, 올해 앱 교육 때도 사업소에서 설치와 로그인 단계부터 많이 힘들어하셨습니다. 이런 상황에서 직장 내 괴롭힘 신고는 계속 들어오고 있고, 이 불편이 쌓이면 회사에 대한 불만과 소외감으로 커질 수 있다고 봅니다. [올해 이수율 확인되면 여기서 수치 언급]"],
+     ["문제 02","두 번째는 현장과 소통하기 어려운 교육 환경입니다. 앱 교육은 시간과 장소에 구애받지 않는 장점이 있지만, AM 현장에서는 몇 가지 어려움이 있었습니다. 영상만으로는 어디까지가 괴롭힘인지 기준을 체감하기 어렵고, 현장 업무를 마친 뒤 개인 휴대폰으로 수강하는 것도 부담이 됩니다. 또 현장에서는 “이것도 괴롭힘인가요?” 같은 질문이 많은데, 이런 질문을 바로 묻고 답할 기회가 적다 보니 결과적으로 법정의무 이수 확인에 머물게 됩니다."],
+     ["시사점","그래서 저희는 이수보다 더 중요한 것이, 현장에서 직장 내 괴롭힘의 기준을 먼저 전달하고 직접 소통하는 것이라고 봤습니다."],
+     ["연결","이를 위한 개선방안을 다음 장에서 말씀드리겠습니다."]],
+    [["핵심 2가지","앞서 말씀드린 것처럼 기준 전달과 소통이 핵심이기 때문에, 개선방안도 이 두 가지에 맞춰 잡았습니다."],
+     ["첫째","연령대와 직무 이해도에 맞춘 현장교육입니다. 사업소를 직접 찾아가 근무조 단위 소규모로 진행하고, 직장 내 괴롭힘과 성희롱 예방을 하나로 묶어 실제 사례를 알아볼 수 없게 각색해서 교육합니다. 전 직원 과정과 소장·반장 같은 현장 관리자 과정은 나눠서, 관리자 과정에서는 지시와 괴롭힘의 경계, 신고가 들어왔을 때의 초기 대응을 다루겠습니다."],
+     ["둘째","신고 전 상담 창구 마련입니다. 코톡을 쓸 수 없는 사업장을 위해 오프라인 창구를 두고, 대면이나 전화로 먼저 상담한 뒤 필요하면 정식 신고로 연결합니다. 참고로 이전 AM 회사에서도 현장교육과 신고 전 상담으로 운영했고, 단순한 오해나 갈등을 초기에 푸는 데 효과가 있었습니다."],
+     ["운영 프로세스","진행은 다섯 단계로 운영합니다. 1단계, 사업소별로 근무조 단위 교육 일정을 확정합니다. 2단계, 현장에 방문해 괴롭힘·성희롱 통합교육을 사례 OX 퀴즈와 토의로 진행합니다. 3단계, 교육 때 대면 상담 담당자와 연락처를 직접 안내합니다. 4단계, 이후 고민이 생긴 직원은 전화나 대면으로 먼저 상담해서, 단순한 갈등은 초기에 풀 수 있게 합니다. 5단계, 실제 괴롭힘 사안은 인사운영팀 정식 신고로 연결합니다. 그리고 성희롱 예방교육 필수 항목을 포함하고 출석부·교안·사진으로 증빙해서, 법정의무 실적으로도 인정받을 수 있게 하겠습니다."],
+     ["운영 원칙","상담을 반드시 거치게 하면 신고를 막는 절차로 보일 수 있어서, 실제 괴롭힘 사안은 바로 신고로 연결하고 상담 없이 신고하는 것도 보장하는 것을 운영 원칙으로 두겠습니다. 교육 시간은 회당 60분 내외로 잡았지만, 현장 근무 여건에 맞춰 조정하겠습니다."]],
+    [["기대효과","이렇게 운영했을 때 기대하는 효과는 크게 두 가지입니다. 첫째, 같은 기준 인지와 반감 완화입니다. 현장에서 다 같이 듣기 때문에 전 직원이 “어디까지가 괴롭힘이고 성희롱인지” 같은 기준을 함께 인지하게 되고, 자연스럽게 경각심이 생깁니다. 직접 듣고 묻고 답하는 과정에서 기준이 훨씬 분명하게 전달됩니다. 동시에 회사가 직접 사업소를 찾아와 챙긴다는 인식이 생겨서, 지금 쌓여 있는 반감을 줄이는 데도 도움이 될 것으로 봅니다. 둘째, 법정의무 충족입니다. 앱을 설치하지 않아도 성희롱 예방교육 법정의무 실적을 함께 확보할 수 있습니다."],
+     ["협조 요청","이를 위해 인사운영팀에 다섯 가지 협조를 부탁드립니다. ① 교육 사례로 쓸 수 있도록, 개인정보를 뺀 신고 사례 유형을 공유해 주세요. ② 사업소 단위는 인원이 적어 누군지 알아볼 수 있기 때문에, 사례 각색 기준을 같이 정했으면 합니다. ③ 앱으로 수강하지 못한 인원을 집합교육으로 대체 인정할 수 있는지 확인 부탁드립니다. ④ 아이켄이 없는 사업장을 위한 오프라인 상담·신고 창구를 공식 절차로 만들고, 담당자와 비밀유지 기준을 함께 정했으면 합니다. ⑤ 마지막으로, 교육이 근무시간 안에서 진행될 수 있도록 사업소별 일정 조율을 부탁드립니다."],
+     ["마무리","정리하면, 현장에서 다 같이 들어야 모두가 같은 기준을 인지하고 경각심을 갖게 된다고 생각합니다. 이 방향으로 진행해도 될지 의견 주시면, 세부 일정과 교안은 제가 준비하겠습니다. 이상입니다."]]
+  ];
+  var TITLES=["1. 현재 문제","2. 개선방안","3. 기대효과 및 협조 요청"];
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var stage=document.getElementById('stage'), vp=document.getElementById('viewport');
+  var notes=document.getElementById('notes'), dots=document.getElementById('dots');
+  var cur=0, N=slides.length;
+
+  slides.forEach(function(_,i){
+    var d=document.createElement('button');
+    d.className='dot'; d.type='button'; d.setAttribute('aria-label',TITLES[i]);
+    d.addEventListener('click',function(){go(i)});
+    dots.appendChild(d);
+  });
+
+  function fit(){
+    var s=Math.min(vp.clientWidth/1920, vp.clientHeight/1080);
+    stage.style.transform='translate(-50%,-50%) scale('+s+')';
+  }
+  function renderNotes(){
+    var html='<h4>발표 스크립트 · '+TITLES[cur]+'</h4>';
+    NOTES[cur].forEach(function(p){ html+='<p><strong>'+p[0]+'</strong> '+p[1]+'</p>'; });
+    notes.innerHTML=html; notes.scrollTop=0;
+  }
+  function go(n){
+    if(n<0||n>=N||n===cur&&slides[n].classList.contains('active')) { if(n===cur) return; return; }
+    slides.forEach(function(s,i){
+      s.classList.remove('active','before');
+      if(i<n) s.classList.add('before');
+    });
+    slides[n].classList.add('active');
+    cur=n; update();
+  }
+  function update(){
+    document.getElementById('count').textContent=(cur+1)+' / '+N;
+    document.getElementById('progress').style.width=((cur+1)/N*100)+'%';
+    document.getElementById('prev').disabled=cur===0;
+    document.getElementById('next').disabled=cur===N-1;
+    [].forEach.call(dots.children,function(d,i){d.classList.toggle('on',i===cur); d.setAttribute('aria-current',i===cur?'true':'false');});
+    if(!notes.hidden) renderNotes();
+  }
+  function toggleNotes(){
+    notes.hidden=!notes.hidden;
+    document.getElementById('noteBtn').setAttribute('aria-pressed',String(!notes.hidden));
+    if(!notes.hidden) renderNotes();
+    requestAnimationFrame(fit);
+  }
+
+  document.getElementById('prev').addEventListener('click',function(){go(cur-1)});
+  document.getElementById('next').addEventListener('click',function(){go(cur+1)});
+  document.getElementById('noteBtn').addEventListener('click',toggleNotes);
+  document.getElementById('fsBtn').addEventListener('click',function(){
+    try{
+      if(document.fullscreenElement){ document.exitFullscreen(); }
+      else { var p=document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen(); if(p&&p.catch) p.catch(function(){}); }
+    }catch(e){}
+  });
+  document.addEventListener('keydown',function(e){
+    if(e.target.closest&&e.target.closest('input,textarea')) return;
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(cur+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(cur-1);}
+    else if(e.key==='Home'){go(0);} else if(e.key==='End'){go(N-1);}
+    else if(e.key==='n'||e.key==='N'){toggleNotes();}
+  });
+  var tx=null, ty=null;
+  vp.addEventListener('touchstart',function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY;},{passive:true});
+  vp.addEventListener('touchend',function(e){
+    if(tx===null) return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)) go(cur+(dx<0?1:-1));
+    tx=null;
+  });
+  if(window.ResizeObserver){ new ResizeObserver(fit).observe(vp); } else { window.addEventListener('resize',fit); }
+  fit(); update();
+})();
+</script>
+
+</body></html>
