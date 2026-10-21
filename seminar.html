@@ -103,6 +103,12 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
 .ask i{font-style:normal;flex:none;font-size:24px;font-weight:700;color:#F7F7F7;background:var(--ink);padding:2px 14px;font-variant-numeric:tabular-nums}
 .ask.hl i{background:var(--accent)}
 .ask.hl{font-weight:700}
+.basis{display:flex;align-items:center;gap:20px;font-size:24px;color:var(--mute)}
+.basis .chip{flex:none;font-weight:700;color:#F7F7F7;background:var(--accent);padding:4px 16px;width:150px;text-align:center}
+.basis-wrap{display:flex;flex-direction:column;gap:8px}
+.slide.s2{gap:14px!important}
+.slide.s2 .proc{justify-content:space-between}
+.tab{border-radius:0!important}
 
 /* 진행 바 + 컨트롤 */
 .progress{position:absolute;left:0;bottom:0;height:6px;background:var(--accent);transition:width .7s cubic-bezier(.2,.75,.2,1)}
@@ -137,7 +143,7 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
         <p class="pill">레저사업운영팀</p>
         <h2 class="title rv" style="--i:0">1. 현재 문제</h2>
         <div class="rule rv" style="--i:1"></div>
-        <p class="key rv" style="--i:2">현장과의 소통도, 신고도 닿지 않아 <em>법정의무 이수에 머물고 있습니다</em></p>
+        <p class="key rv" style="--i:2">AM 현장의 예방교육은 <em>이수는 되지만, 전달은 되지 않고 있습니다</em></p>
         <div class="cols">
           <div class="col rv" style="--i:3">
             <div class="tab"><small>문제 01</small><strong>교육·신고 접근이 어려운 구조</strong></div>
@@ -145,7 +151,7 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
               <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4"/><path d="M11 11l9 9M16 16l2-2M18.5 18.5l2-2"/></svg><b>계정 부재</b><span>아이켄 ID 없어 개인 폰에 앱 설치</span></div>
               <div class="row"><svg class="ic" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg><b>신고 채널 부재</b><span>신고는 코톡에만, 사업장 이용 불가</span></div>
               <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.6c2.6.2 4.4 2 5 5.4"/></svg><b>접근성 한계</b><span>고연령, 설치·로그인부터 어려움</span></div>
-              <div class="row"><svg class="ic warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg><b>신고 다발</b><span>괴롭힘 신고 지속, 불만 확대 우려</span></div>
+              <div class="row"><svg class="ic warn" viewBox="0 0 24 24"><path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/></svg><b>신고 다발</b><span>다양한 유형의 괴롭힘 신고 지속</span></div>
             </div>
           </div>
           <div class="col rv" style="--i:4">
@@ -153,13 +159,13 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
             <div class="box">
               <div class="row"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M10 8l5 2.5-5 2.5z"/><path d="M8 21h8"/></svg><b>기준 전달 한계</b><span>영상만으로는 괴롭힘 기준 체감 어려움</span></div>
               <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><b>수강 부담</b><span>현장 업무 후 개인 폰 수강 부담</span></div>
-              <div class="row"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><b>질문·소통 부족</b><span>현장 질문을 바로 묻고 답하기 어려움</span></div>
-              <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><b>이수 중심 운영</b><span>법정의무 이수 확인에 머묾</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><b>질문·소통 부족</b><span>“이것도 괴롭힘인가요?”를 묻기 어려움</span></div>
+              <div class="row"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.7 2.7L16 9.5"/></svg><b>독려 중심 이수</b><span>개별 독려로 이수율을 맞추는 구조</span></div>
             </div>
           </div>
         </div>
         <svg class="down rv" style="--i:5" viewBox="0 0 40 44" aria-hidden="true"><path d="M13 0h14v24h13L20 44 0 24h13z" fill="currentColor"/></svg>
-        <div class="verdict rv" style="--i:6"><div class="lab">시사점</div><p>이수보다 중요한 것은 현장에서 <b>직장 내 괴롭힘의 기준을 먼저 전달하고 직접 소통하는 것</b></p></div>
+        <div class="verdict rv" style="--i:6"><div class="lab">시사점</div><p>괴롭힘 예방의 출발점은 이수가 아니라 <b>기준의 전달</b>이며, 이는 현장에서 직접 소통할 때 가능합니다</p></div>
         <p class="foot">레저사업운영팀 업무개선Unit · AM 사업부 예방교육 운영 개선 제안</p>
         <p class="pno">01 <span>/ 03</span></p>
       </section>
@@ -169,15 +175,16 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
         <p class="pill">레저사업운영팀</p>
         <h2 class="title rv" style="--i:0">2. 개선방안</h2>
         <div class="rule rv" style="--i:1"></div>
-        <p class="key rv" style="--i:2">현장 눈높이 교육과 상담 창구로 <em>예방부터 대응까지 연결합니다</em></p>
+        <p class="key rv" style="--i:2">고용노동부 권고 방식을 <em>AM 현장에 맞게 적용합니다</em></p>
+        <div class="basis-wrap rv" style="--i:3"><div class="basis"><span class="chip">근거 · 교육</span><span>고용노동부 예방·대응 매뉴얼(2026.7) – 관리자·직원 교육 분리 · 우리 회사 사례 토론 · 성희롱 예방교육과 통합</span></div><div class="basis"><span class="chip">근거 · 상담</span><span>공정한 고충처리 보장 시 괴롭힘 억제 · 피해자가 원하면 상담으로 먼저 해결 · 상담창구·신고절차 접근성 제고</span></div></div>
         <div class="cols" style="gap:28px">
           <div class="left rv" style="--i:3">
             <div class="tab"><small>개선방안</small><strong>핵심 2가지</strong></div>
             <div class="box" style="padding:32px 36px">
               <div class="plan-item">
                 <div class="num">1</div>
-                <div><h3>연령대·직무 이해도에 맞춘 현장교육</h3>
-                  <ul><li>근무조 단위 소규모 방문교육</li><li>괴롭힘·성희롱 통합, 실제 사례 각색</li><li>전 직원 / 관리자 과정 분리</li></ul></div>
+                <div><h3>연령대·직무에 맞춘 현장교육</h3>
+                  <ul><li>근무조 단위 소규모 방문교육</li><li>괴롭힘·성희롱 통합, 실제 사례 토론</li><li>현장 관리자(소장·반장) 별도 과정</li></ul></div>
               </div>
               <div class="plan-item">
                 <div class="num blue">2</div>
@@ -191,12 +198,10 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
             <div class="tab"><small>운영 프로세스</small><strong>교육 → 상담 → 신고 연결</strong></div>
             <div class="proc">
               <div class="step"><span class="n">STEP 01</span><b>일정 조율</b><span>사업소별 근무조 단위 교육 일정 확정</span></div>
-              <div class="step"><span class="n">STEP 02</span><b>현장 방문 교육</b><span>괴롭힘·성희롱 통합, 실제 사례 OX·토의</span></div>
+              <div class="step"><span class="n">STEP 02</span><b>현장 방문 교육</b><span>우리 회사 사례로 OX·토론</span></div>
               <div class="step"><span class="n">STEP 03</span><b>상담 창구 안내</b><span>대면 상담 담당자·연락처 직접 공유</span></div>
               <div class="step"><span class="n blue">STEP 04</span><b>신고 전 상담</b><span>비밀 보장 상담으로 단순 갈등 조기 해소</span></div>
-              <div class="step"><span class="n blue">STEP 05</span><b>신고 연결</b><span>실제 괴롭힘 사안은 인사운영팀 정식 신고</span></div>
-              <p class="note-in">※ 성희롱 예방교육 필수 항목 포함, 출석부·교안·사진 증빙</p>
-            </div>
+              <div class="step"><span class="n blue">STEP 05</span><b>신고 연결</b><span>실제 괴롭힘 사안은 인사운영팀 정식 신고</span></div>            </div>
           </div>
         </div>
         <div class="verdict rv" style="--i:6"><div class="lab">운영 원칙</div><p>상담 내용은 <b>비밀 보장</b>, 실제 괴롭힘 사안은 <b>즉시 신고 연결</b> (바로 신고도 가능)</p></div>
@@ -217,18 +222,19 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
               <div class="effect"><div class="halo"><svg class="ic" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.8"/><path d="M16.5 14.6c2.6.2 4.4 2 5 5.4"/></svg></div>
                 <div><h3>같은 기준 인지 · 신뢰 형성</h3><p>전 직원 경각심 형성, “회사가 직접 찾아와 챙긴다”는 인식</p></div></div>
               <div class="effect"><div class="halo"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></div>
-                <div><h3>법정의무 충족</h3><p>앱 설치 없이 성희롱 예방교육 실적 확보</p></div></div>
+                <div><h3>법정의무 동시 충족</h3><p>앱 설치 없이 성희롱 예방교육 실적 확보</p></div></div>
             </div>
           </div>
           <div class="col rv" style="--i:4">
             <div class="tab"><small>협조 요청</small><strong>인사운영팀</strong></div>
             <div class="asks">
               <div class="ask"><i>01</i>신고 사례 유형 공유 (개인정보 제외)</div>
-              <div class="ask"><i>02</i>사례 각색 기준 협의 (2차 피해 방지)</div>
+              <div class="ask"><i>02</i>사례 활용 기준 협의 (종결 사건, 신원 비노출)</div>
               <div class="ask hl"><i>03</i>오프라인 상담·신고 창구 공식화</div>
             </div>
           </div>
         </div>
+        <div class="verdict rv" style="--i:5"><div class="lab">결론</div><p>교육으로 <b>기준</b>을 세우고, 상담으로 <b>조기에</b> 풀 때 직장 내 괴롭힘이 예방됩니다</p></div>
         <p class="foot">레저사업운영팀 업무개선Unit · AM 사업부 예방교육 운영 개선 제안</p>
         <p class="pno">03 <span>/ 03</span></p>
       </section>
@@ -252,22 +258,7 @@ h2.title{margin:0;font-size:64px;font-weight:900;line-height:1.2;letter-spacing:
 
 <script>
 (function(){
-  var NOTES=[
-    [["오프닝","안녕하세요, 레저사업운영팀 업무개선Unit 김라경입니다. AM 사업부 직장 내 괴롭힘 신고와 관련해서, 교육 쪽에서 본 현재 문제와 개선방안을 세 장으로 정리해 왔습니다. 먼저 현재 상황부터 말씀드리겠습니다."],
-     ["핵심 메시지","한 줄로 말씀드리면, 지금 AM 현장은 소통도 신고도 잘 닿지 않아서, 예방교육이 법정의무 이수에 머물러 있는 상황입니다."],
-     ["문제 01","첫 번째는 AM 현장 직군이 교육과 신고 모두에 접근하기 어려운 구조라는 점입니다. 미화·보안·시설 직군은 아이켄 ID가 없어서, 법정의무교육을 들으려면 개인 휴대폰에 앱을 따로 설치해야 합니다. 또 아이켄 신고는 코톡에만 있다 보니, 아이켄이 없는 대부분의 AM 사업장은 상담이나 신고 채널 자체를 이용할 수 없습니다. 여기에 연령대가 높은 분들이 많아서, 올해 앱 교육 때도 사업소에서 설치와 로그인 단계부터 많이 힘들어하셨습니다. 이런 상황에서 직장 내 괴롭힘 신고는 계속 들어오고 있고, 이 불편이 쌓이면 회사에 대한 불만과 소외감으로 커질 수 있다고 봅니다. [올해 이수율 확인되면 여기서 수치 언급]"],
-     ["문제 02","두 번째는 현장과 소통하기 어려운 교육 환경입니다. 앱 교육은 시간과 장소에 구애받지 않는 장점이 있지만, AM 현장에서는 몇 가지 어려움이 있었습니다. 영상만으로는 어디까지가 괴롭힘인지 기준을 체감하기 어렵고, 현장 업무를 마친 뒤 개인 휴대폰으로 수강하는 것도 부담이 됩니다. 또 현장에서는 “이것도 괴롭힘인가요?” 같은 질문이 많은데, 이런 질문을 바로 묻고 답할 기회가 적다 보니 결과적으로 법정의무 이수 확인에 머물게 됩니다."],
-     ["시사점","그래서 저희는 이수보다 더 중요한 것이, 현장에서 직장 내 괴롭힘의 기준을 먼저 전달하고 직접 소통하는 것이라고 봤습니다."],
-     ["연결","이를 위한 개선방안을 다음 장에서 말씀드리겠습니다."]],
-    [["핵심 2가지","앞서 말씀드린 것처럼 기준 전달과 소통이 핵심이기 때문에, 개선방안도 이 두 가지에 맞춰 잡았습니다."],
-     ["첫째","연령대와 직무 이해도에 맞춘 현장교육입니다. 사업소를 직접 찾아가 근무조 단위 소규모로 진행하고, 직장 내 괴롭힘과 성희롱 예방을 하나로 묶어 실제 사례를 알아볼 수 없게 각색해서 교육합니다. 전 직원 과정과 소장·반장 같은 현장 관리자 과정은 나눠서, 관리자 과정에서는 지시와 괴롭힘의 경계, 신고가 들어왔을 때의 초기 대응을 다루겠습니다."],
-     ["둘째","신고 전 상담 창구 마련입니다. 코톡을 쓸 수 없는 사업장을 위해 오프라인 창구를 두고, 대면이나 전화로 먼저 상담한 뒤 필요하면 정식 신고로 연결합니다. 상담 내용은 비밀로 보장해서, 직원들이 부담 없이 이야기할 수 있게 하겠습니다. 참고로 이전 AM 회사에서도 현장교육과 신고 전 상담으로 운영했고, 단순한 오해나 갈등을 초기에 푸는 데 효과가 있었습니다."],
-     ["운영 프로세스","진행은 다섯 단계로 운영합니다. 1단계, 사업소별로 근무조 단위 교육 일정을 확정합니다. 2단계, 현장에 방문해 괴롭힘·성희롱 통합교육을 사례 OX 퀴즈와 토의로 진행합니다. 3단계, 교육 때 대면 상담 담당자와 연락처를 직접 안내합니다. 4단계, 이후 고민이 생긴 직원은 비밀이 보장되는 상담을 먼저 받아서, 단순한 갈등은 초기에 풀 수 있게 합니다. 5단계, 실제 괴롭힘 사안은 인사운영팀 정식 신고로 연결합니다. 그리고 성희롱 예방교육 필수 항목을 포함하고 출석부·교안·사진으로 증빙해서, 법정의무 실적으로도 인정받을 수 있게 하겠습니다."],
-     ["운영 원칙","운영 원칙은 두 가지입니다. 첫째, 상담 내용은 비밀을 보장합니다. 둘째, 상담을 반드시 거치게 하면 신고를 막는 절차로 보일 수 있어서, 실제 괴롭힘 사안은 바로 신고로 연결하고 상담 없이 신고하는 것도 보장하겠습니다."]],
-    [["기대효과","이렇게 운영했을 때 기대하는 효과는 크게 두 가지입니다. 첫째, 같은 기준 인지와 신뢰 형성입니다. 현장에서 다 같이 듣기 때문에 전 직원이 “어디까지가 괴롭힘이고 성희롱인지” 같은 기준을 함께 인지하게 되고, 자연스럽게 경각심이 생깁니다. 직접 듣고 묻고 답하는 과정에서 기준이 훨씬 분명하게 전달됩니다. 동시에 회사가 직접 사업소를 찾아와 챙긴다는 인식이 생겨서, 회사에 대한 신뢰를 쌓는 데도 도움이 될 것으로 봅니다. 둘째, 법정의무 충족입니다. 앱을 설치하지 않아도 성희롱 예방교육 법정의무 실적을 함께 확보할 수 있습니다."],
-     ["협조 요청","이를 위해 인사운영팀에 세 가지 협조를 부탁드립니다. ① 교육 사례로 쓸 수 있도록, 개인정보를 뺀 신고 사례 유형을 공유해 주세요. ② 사업소 단위는 인원이 적어 누군지 알아볼 수 있기 때문에, 사례 각색 기준을 같이 정했으면 합니다. ③ 아이켄이 없는 사업장을 위한 오프라인 상담·신고 창구를 공식 절차로 만들고, 담당자와 비밀유지 기준을 함께 정했으면 합니다."],
-     ["마무리","정리하면, 현장에서 다 같이 들어야 모두가 같은 기준을 인지하고 경각심을 갖게 된다고 생각합니다. 이 방향으로 진행해도 될지 의견 부탁드립니다. 이상입니다."]]
-  ];
+  var NOTES=[[["오프닝", "안녕하세요, 레저사업운영팀 업무개선Unit 김라경입니다. AM 사업부 직장 내 괴롭힘 신고와 관련해서, 교육 쪽에서 본 현재 문제와 개선방안을 세 장으로 정리해 왔습니다."], ["핵심 메시지", "한 줄로 말씀드리면, 지금 AM 현장의 예방교육은 이수는 되고 있지만, 내용이 현장에 전달되지는 않고 있습니다."], ["문제 01", "첫 번째는 교육과 신고 모두에 접근하기 어려운 구조입니다. 미화·보안·시설 직군은 아이켄 ID가 없어서, 법정의무교육을 들으려면 개인 휴대폰에 앱을 따로 설치해야 합니다. 아이켄 신고도 코톡에만 있어서, 대부분의 AM 사업장은 상담이나 신고 채널을 이용할 수 없습니다. 연령대가 높은 분들이 많아 올해 앱 교육 때도 설치와 로그인 단계부터 많이 힘들어하셨고, 그 사이 다양한 유형의 괴롭힘 신고는 계속 들어오고 있습니다."], ["문제 02", "두 번째는 교육 환경입니다. 앱 교육은 시간과 장소에 구애받지 않는 장점이 있지만, AM 현장에서는 영상만으로 어디까지가 괴롭힘인지 기준을 체감하기 어렵고, 업무를 마친 뒤 개인 휴대폰으로 수강하는 것도 부담이 됩니다. 현장에서는 “이것도 괴롭힘인가요?” 같은 질문이 많은데, 이걸 바로 묻고 답할 기회도 없습니다. 이수율은 사업소별로 개별 연락해 독려하는 방식으로 매년 100%를 맞추고 있고, 올해도 현재 3명이 남아 마무리 중입니다. 다만 이렇게 맞춘 이수가 교육 내용이 현장에 전달됐다는 의미는 아니라고 봤습니다."], ["시사점", "괴롭힘은 무엇이 괴롭힘인지 알아야 예방할 수 있습니다. 그래서 예방의 출발점은 이수가 아니라 기준의 전달이고, AM 현장에서는 직접 만나서 소통할 때 그 기준이 전달된다고 봤습니다."], ["연결", "이를 위한 개선방안을 다음 장에서 말씀드리겠습니다."]], [["핵심 메시지", "개선방안은 새로운 방식을 만드는 게 아니라, 고용노동부가 권고하는 방식을 AM 현장에 맞게 적용하는 것입니다."], ["근거", "고용노동부 「직장 내 괴롭힘 예방·대응 매뉴얼」 2026년 7월판을 보면, 관리자 교육과 직원 교육을 분리하고, 우리 회사에서 자주 생길 수 있는 괴롭힘 사례로 토론하고, 성희롱 법정교육과 통합해서 예방교육의 효과를 높이라고 되어 있습니다. 그런데 이런 토론과 관리자 분리 교육은 앱 영상으로는 하기 어렵기 때문에, AM 현장에서는 현장교육으로 제안드립니다."], ["개선방안 1", "첫째, 연령대와 직무에 맞춘 현장교육입니다. 사업소를 직접 찾아가 근무조 단위 소규모로 진행하고, 직장 내 괴롭힘과 성희롱 예방을 하나로 묶어 실제 사례로 토론합니다. 소장·반장 같은 현장 관리자 과정은 따로 운영해서, 지시와 괴롭힘의 경계, 신고가 들어왔을 때의 초기 대응을 다루겠습니다."], ["개선방안 2", "둘째, 신고 전 상담 창구 마련입니다. 코톡을 쓸 수 없는 사업장을 위해 오프라인 창구를 두고, 대면이나 전화로 먼저 상담한 뒤 필요하면 정식 신고로 연결합니다. 상담 내용은 비밀로 보장해서 부담 없이 이야기할 수 있게 하겠습니다."],["근거 · 상담","상담 창구도 고용노동부 매뉴얼에 근거가 있습니다. 투명하고 공정한 고충처리가 보장되는 회사에서 괴롭힘이 억제되고, 피해자가 원하면 상담을 통한 고충처리로 먼저 해결을 모색한 뒤 정식 조사로 갈 수 있다고 되어 있습니다. 또 평소 상담창구와 신고절차를 교육·홍보하고 접근성을 높여야 한다고 권고하고 있는데, 지금 코톡을 쓸 수 없는 AM은 이 접근성이 막혀 있는 상태입니다."], ["운영 프로세스", "진행은 다섯 단계입니다. 사업소별로 일정을 조율하고, 현장에서 사례 중심으로 교육하고, 그 자리에서 상담 담당자와 연락처를 안내합니다. 이후 고민이 생긴 직원은 비밀이 보장되는 상담을 먼저 받아 단순한 갈등은 초기에 풀고, 실제 괴롭힘 사안은 인사운영팀 정식 신고로 연결합니다. 성희롱 예방교육 법정 필수 항목도 포함하고 출석부·교안·사진으로 증빙하겠습니다."], ["운영 원칙", "상담 내용은 비밀을 보장하고, 상담을 반드시 거치게 하면 신고를 막는 절차로 보일 수 있어서 실제 괴롭힘 사안은 바로 신고로 연결하고 상담 없이 신고하는 것도 보장하겠습니다."]], [["기대효과", "이렇게 운영했을 때 기대하는 효과는 두 가지입니다. 첫째, 같은 기준 인지와 신뢰 형성입니다. 현장에서 다 같이 듣기 때문에 전 직원이 “어디까지가 괴롭힘이고 성희롱인지” 같은 기준을 함께 알게 되고, 자연스럽게 경각심이 생깁니다. 직접 듣고 묻고 답하는 과정에서 기준이 훨씬 분명하게 전달됩니다. 동시에 회사가 직접 사업소를 찾아와 챙긴다는 인식이 생겨서 회사에 대한 신뢰를 쌓는 데도 도움이 될 것으로 봅니다. 둘째, 법정의무도 함께 충족합니다. 앱을 설치하지 않아도 성희롱 예방교육 법정의무 실적을 확보할 수 있습니다."], ["협조 요청", "이를 위해 인사운영팀에 세 가지 협조를 부탁드립니다. ① 교육 사례로 쓸 수 있도록, 개인정보를 뺀 신고 사례 유형을 공유해 주세요. ② 고용노동부 매뉴얼에서도 실제 사례는 사건이 종결된 뒤에, 당사자 신원이 드러나지 않게 쓰라고 권고하고 있습니다. 사업소는 인원이 적어 특정될 수 있으니 사례 활용 기준을 함께 정했으면 합니다. ③ 아이켄이 없는 사업장을 위한 오프라인 상담·신고 창구를 공식 절차로 만들고, 담당자와 비밀유지 기준을 함께 정했으면 합니다."], ["참고", "한 가지 미리 말씀드리면, 교육 초기에는 직원들이 기준을 알게 되면서 신고가 일시적으로 늘 수 있습니다. 이는 숨어 있던 문제가 드러나는 과정으로 보고, 효과는 상담으로 해결된 건수와 중대 사안 감소로 보겠습니다."], ["결론", "정리하면, 교육으로 기준을 세우고 상담으로 조기에 풀 때 직장 내 괴롭힘이 예방된다고 생각합니다. 이 방향으로 진행해도 될지 의견 부탁드립니다. 이상입니다."]]];
   var TITLES=["1. 현재 문제","2. 개선방안","3. 기대효과 및 협조 요청"];
   var slides=[].slice.call(document.querySelectorAll('.slide'));
   var stage=document.getElementById('stage'), vp=document.getElementById('viewport');
